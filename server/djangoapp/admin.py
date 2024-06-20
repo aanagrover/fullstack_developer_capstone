@@ -8,8 +8,8 @@ admin.site.register(CarMake)
 admin.site.register(CarModel)
 
 # CarModelInline class
-class CarModelInline:
-    pass
+# class CarModelInline:
+#     pass
 # CarModelAdmin class
 
 # CarMakeAdmin class with CarModelInline

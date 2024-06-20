@@ -27,14 +27,19 @@ const PostReview = () => {
     if(name.includes("null")) {
       name = sessionStorage.getItem("username");
     }
-    if(!model || review === "" || date === "" || year === "" || model === "") {
-      alert("All details are mandatory")
-      return;
-    }
+    // if(!model || review === "" || date === "" || year === "" || model === "") {
+    //   alert("All details are mandatory")
+    //   return;
+    // }
+    
+    if(review === "" || date === "" || year === "") {
+        alert("All details are mandatory")
+        return;
+      }
 
-    let model_split = model.split(" ");
-    let make_chosen = model_split[0];
-    let model_chosen = model_split[1];
+    // let model_split = model.split(" ");
+    // let make_chosen = model_split[0];
+    // let model_chosen = model_split[1];
 
     let jsoninput = JSON.stringify({
       "name": name,
@@ -42,12 +47,12 @@ const PostReview = () => {
       "review": review,
       "purchase": true,
       "purchase_date": date,
-      "car_make": make_chosen,
-      "car_model": model_chosen,
+      "car_make": "Nissan",
+      "car_model": "Pathfinder",
       "car_year": year,
     });
 
-    console.log(jsoninput);
+    console.log("data recieved ----", jsoninput);
     const res = await fetch(review_url, {
       method: "POST",
       headers: {
@@ -86,7 +91,7 @@ const PostReview = () => {
   }
   useEffect(() => {
     get_dealer();
-    get_cars();
+    // get_cars();
   },[]);
 
 

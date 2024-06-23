@@ -43,9 +43,9 @@ def get_request(endpoint, **kwargs):
         # Call get method of requests library with URL and parameters
         response = requests.get(request_url)
         return response.json()
-    except Exception as e: 
+    except Exception as e:
         # If any error occurs
-        print("Network exception occurred")
+        print(f"Network exception occurred: {e}")
 
 
 def post_request(url, json_payload, **kwargs):
@@ -53,7 +53,7 @@ def post_request(url, json_payload, **kwargs):
     return response
 
 
-#---- commented as didn't find if used---
+# ---- commented as didn't find if used---
 # def get_dealers_from_cf(url, **kwargs):
 #     results = []
 #     # Call get_request with a URL parameter
@@ -71,7 +71,8 @@ def post_request(url, json_payload, **kwargs):
 #                                    id=dealer_doc["id"],
 # lat=dealer_doc["lat"], long=dealer_doc["long"],
 #                                    short_name=dealer_doc["short_name"],
-#                                    st=dealer_doc["st"], zip=dealer_doc["zip"])
+#                                    st=dealer_doc["st"],
+#                                    zip=dealer_doc["zip"])
 #             results.append(dealer_obj)
 
 #     return results
@@ -105,10 +106,11 @@ def analyze_review_sentiments(text):
 # def post_review(data_dict):
 def post_review(data_dict):
     request_url = backend_url+"/insert_review"
-    try:
+    try: 
         response = requests.post(request_url,json=data_dict)
         print(response.json())
         return response.json()
     except Exception as err:
+        print(f"Unexpected {err=}, {type(err)=}")
         print("Network exception occurred")
 # Add code for posting review

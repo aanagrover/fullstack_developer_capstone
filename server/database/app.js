@@ -80,7 +80,7 @@ app.get('/fetchDealers/:state', async (req, res) => {
 // Express route to fetch dealer by a particular id
 app.get('/fetchDealer/:id', async (req, res) => {
     try {
-        const id  = req.params.id
+        const id  = req.params.id;
         const documents = await Dealerships.find({id});
         res.json(documents);
     } catch (error) {
@@ -92,7 +92,7 @@ app.get('/fetchDealer/:id', async (req, res) => {
 app.post('/insert_review', express.raw({ type: '*/*' }), async (req, res) => {
   data = JSON.parse(req.body);
   const documents = await Reviews.find().sort( { id: -1 } );
-  let new_id = documents[0].id+1
+  let new_id = documents[0].id+1;
 
   const review = new Reviews({
 		"id": new_id,

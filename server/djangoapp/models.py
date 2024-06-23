@@ -1,8 +1,8 @@
 # Uncomment the following imports before adding the Model code
 
 from django.db import models
-from django.utils.timezone import now
-from django.core.validators import MaxValueValidator, MinValueValidator
+# from django.utils.timezone import now
+# from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 # Create your models here.
@@ -28,7 +28,8 @@ class CarMake(models.Model):
 # - __str__ method to print a car make object
 
 # class CarModel(models.Model):
-#     car_make = models.ForeignKey(CarMake, on_delete=models.CASCADE)  # Many-to-One relationship
+#     car_make = models.ForeignKey(CarMake, on_delete=models.CASCADE)  
+# Many-to-One relationship
 #     name = models.CharField(max_length=100)
 #     CAR_TYPES = [
 #         ('SEDAN', 'Sedan'),
@@ -58,9 +59,10 @@ class CarModel(models.Model):
     def __str__(self):
         return self.name
 
-class CarDealer:
 
-    def __init__(self, address, city, full_name, id, lat, long, short_name, st, zip):
+class CarDealer:
+    def __init__(self, address, city, full_name, id,
+                 lat, long, short_name, st, zip):
         # Dealer address
         self.address = address
         # Dealer city
@@ -84,12 +86,11 @@ class CarDealer:
         return "Dealer name: " + self.full_name
 
 
-
 # <HINT> Create a plain Python class `DealerReview` to hold review data
-
 class DealerReview:
 
-    def __init__(self, dealership, name, purchase, review, purchase_date, car_make, car_model, car_year, sentiment, id):
+    def __init__(self, dealership, name, purchase,
+    review, purchase_date, car_make, car_model, car_year, sentiment, id):
         # Dealership
         self.dealership = dealership
         # Dealer name
